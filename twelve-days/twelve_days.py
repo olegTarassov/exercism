@@ -1,5 +1,8 @@
 def recite(start_verse, end_verse):
 
+    if end_verse < 1 or end_verse > 12:
+        raise Exception("Days out of Song Range: 1-12")
+
     numtoword = {
         1: "first",
         2: "second",
@@ -12,34 +15,35 @@ def recite(start_verse, end_verse):
         9: "ninth",
         10: "tenth",
         11: "eleventh",
-        12: "twelfth"
+        12: "twelfth",
     }
 
     lyrics = [
-        "hidden egg was found",
-        "a Partridge in a Pear Tree.",
-        "two Turtle Doves, and a Partridge in a Pear Tree.",
-        "three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.",
-        "four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.",
-        "five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.",
-        "six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.",
-        "seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.",
-        "eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.",
-        "nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.",
-        "ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.",
-        "eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.",
-        "twelve Drummers Drumming, eleven Pipers Piping, ten Lords-a-Leaping, nine Ladies Dancing, eight Maids-a-Milking, seven Swans-a-Swimming, six Geese-a-Laying, five Gold Rings, four Calling Birds, three French Hens, two Turtle Doves, and a Partridge in a Pear Tree.",
+        "On the {} day of Christmas my true love gave to me: ",
+        "and a Partridge in a Pear Tree.",
+        "two Turtle Doves",
+        "three French Hens",
+        "four Calling Birds",
+        "five Gold Rings",
+        "six Geese-a-Laying",
+        "seven Swans-a-Swimming",
+        "eight Maids-a-Milking",
+        "nine Ladies Dancing",
+        "ten Lords-a-Leaping",
+        "eleven Pipers Piping",
+        "twelve Drummers Drumming",
     ]
 
     song = list()
 
-    if end_verse < 1 or end_verse > 12:
-        raise Exception("Days out of Song Range: 1-12")
-
     for x in range(start_verse, end_verse + 1):
-        song.append(
-            f"On the {numtoword[x]} day of Christmas my true love gave to me: "
-            + lyrics[x]
-        )
+        if x == 1:
+            song.append(lyrics[0].format(numtoword[x]) + lyrics[1].replace("and ", ""))
+
+        else:
+            song.append(
+                lyrics[0].format(numtoword[x])
+                + ", ".join(lyrics[line] for line in range(x, 0, -1))
+            )
 
     return song
