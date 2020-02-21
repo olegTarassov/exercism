@@ -1,8 +1,4 @@
-def recite(start_verse, end_verse):
-
-    if end_verse < 1 or end_verse > 12:
-        raise Exception("Days out of Song Range: 1-12")
-
+def verse(x):
     numtoword = {
         1: "first",
         2: "second",
@@ -34,16 +30,19 @@ def recite(start_verse, end_verse):
         "twelve Drummers Drumming",
     ]
 
-    song = list()
+    if x == 1:
+        return lyrics[0].format(numtoword[x]) + lyrics[1].replace("and ", "")
 
-    for x in range(start_verse, end_verse + 1):
-        if x == 1:
-            song.append(lyrics[0].format(numtoword[x]) + lyrics[1].replace("and ", ""))
+    else:
+        return lyrics[0].format(numtoword[x]) + ", ".join(
+            lyrics[line] for line in range(x, 0, -1)
+        )
 
-        else:
-            song.append(
-                lyrics[0].format(numtoword[x])
-                + ", ".join(lyrics[line] for line in range(x, 0, -1))
-            )
+    # return song
 
-    return song
+
+def recite(start_verse, end_verse):
+    if end_verse < 1 or end_verse > 12:
+        raise Exception("Days out of Song Range: 1-12")
+
+    return [verse(x) for x in range(start_verse, end_verse + 1)]
