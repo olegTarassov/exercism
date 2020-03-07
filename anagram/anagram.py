@@ -1,14 +1,10 @@
 def find_anagrams(word, candidates):
 
-    sorted_word = ''.join(sorted(word))
+    sorted_word = "".join(sorted(word.lower()))
 
-    for num, can_word in enumerate(candidates):
-
-        if ''.join(sorted(can_word)) == sorted_word:
-            print("Words {}: {}".format(num, can_word))
-
-
-ana_list = ["enlists", "google","inlets","banana"]
-
-# inlets
-find_anagrams("listen", ana_list)
+    return [
+        can_word
+        for can_word in candidates
+        if "".join(sorted(can_word.lower())) == sorted_word
+        and can_word.lower() != word.lower()
+    ]

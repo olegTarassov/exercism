@@ -14,8 +14,8 @@ def verse(x):
         12: "twelfth",
     }
 
+        #"On the {} day of Christmas my true love gave to me: ",
     lyrics = [
-        "On the {} day of Christmas my true love gave to me: ",
         "and a Partridge in a Pear Tree.",
         "two Turtle Doves",
         "three French Hens",
@@ -31,14 +31,12 @@ def verse(x):
     ]
 
     if x == 1:
-        return lyrics[0].format(numtoword[x]) + lyrics[1].replace("and ", "")
+        verses = lyrics[0].replace("and ", "")
 
     else:
-        return lyrics[0].format(numtoword[x]) + ", ".join(
-            lyrics[line] for line in range(x, 0, -1)
-        )
+        verses = ", ".join(lyrics[x-1::-1])
 
-    # return song
+    return f"On the {numtoword[x]} day of Christmas my true love gave to me: {verses}"
 
 
 def recite(start_verse, end_verse):
