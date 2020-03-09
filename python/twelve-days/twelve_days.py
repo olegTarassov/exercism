@@ -14,7 +14,6 @@ def verse(x):
         12: "twelfth",
     }
 
-        #"On the {} day of Christmas my true love gave to me: ",
     lyrics = [
         "and a Partridge in a Pear Tree.",
         "two Turtle Doves",

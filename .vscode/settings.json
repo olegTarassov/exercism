@@ -1,0 +1,9 @@
+{
+  "python.pythonPath": "/Users/olegtarassov/.local/share/virtualenvs/exercism-FDfeu176/bin/python",
+  "python.testing.pytestArgs": [
+    "python"
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.nosetestsEnabled": false,
+  "python.testing.pytestEnabled": true
+}

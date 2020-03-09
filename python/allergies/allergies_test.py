@@ -167,7 +167,7 @@ class AllergiesTest(unittest.TestCase):
 
     def test_no_allergen_score_parts(self):
         self.assertCountEqual(
-            Allergies(509).lst,
+            Allergies(253).lst,
             [
                 "eggs",
                 "shellfish",
