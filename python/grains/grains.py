@@ -10,7 +10,8 @@ def square(number: int) -> int:
 
     return total
 
-    #return 2**(number-1)
+    # return 2**(number-1)
+
 
 def total() -> int:
 
