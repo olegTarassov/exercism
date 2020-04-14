@@ -3,9 +3,7 @@ def factors(value: int) -> int:
     return list of prime devisors
     """
 
-    result = list()
-
-    x = 2
+    result, x = [], 2
 
     while x * x <= value:
         print(f"running {x}")
