@@ -1,7 +1,7 @@
 {
   "python.pythonPath": "/Users/olegtarassov/.local/share/virtualenvs/python-6SHz9i_g/bin/python",
   "python.testing.pytestArgs": [
-    "sum-of-multiples"
+    "prime-factors"
   ],
   "python.testing.unittestEnabled": false,
   "python.testing.nosetestsEnabled": false,
